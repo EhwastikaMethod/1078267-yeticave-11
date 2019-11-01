@@ -35,6 +35,12 @@ $items = [
         'image' => 'img/lot-6.jpg',
     ],
     ];
+    function formatted_price (float $cost) {
+        $cost = ceil ($cost);
+    
+        return number_format($cost, 0, "", " ") ."₽";
+    
+       }
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -86,7 +92,6 @@ $items = [
         <h2 class="promo__title">Нужен стафф для катки?</h2>
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
-            <!--заполните этот список из массива категорий-->
             <?php
             $index = 0;
             $count = count($categories);
@@ -103,7 +108,6 @@ $items = [
             <h2>Открытые лоты</h2>
         </div>
         <ul class="lots__list">
-            <!--заполните этот список из массива с товарами-->
             <?php foreach ($items as $offer): ?>
             <li class="lots__item lot">
                 <div class="lot__image">
@@ -115,7 +119,7 @@ $items = [
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?=$offer['price']; ?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?= formatted_price($offer['price']); ?></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
@@ -132,7 +136,6 @@ $items = [
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
-            <!--заполните этот список из массива категорий-->
             <?php
             $index = 0;
             $count = count($categories);
