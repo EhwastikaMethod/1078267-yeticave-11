@@ -34,13 +34,12 @@ $items = [
         'price' => '5400',
         'image' => 'img/lot-6.jpg',
     ],
-    ];
-    function formatted_price (float $cost) {
-        $cost = ceil ($cost);
+];
+function formatted_price (float $cost) {
+    $cost = ceil ($cost);
     
-        return number_format($cost, 0, "", " ") ."₽";
-    
-       }
+    return number_format($cost, 0, "", " ") ."₽";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="ru">
