@@ -39,7 +39,7 @@ function formatted_price (float $cost) {
     $cost = ceil ($cost);
     
     return number_format($cost, 0, "", " ") ."₽";
-    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
