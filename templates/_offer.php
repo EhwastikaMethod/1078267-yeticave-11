@@ -1,4 +1,11 @@
-﻿<li class="lots__item lot">
+﻿<?php
+    $time_left = time_left ($offer['fd']);
+    $hours = $time_left[0];
+    $minutes = $time_left[1];
+    $lessThenHour = ($hours < 1 && $minutes < 60);
+?>
+
+<li class="lots__item lot">
     <div class="lot__image">
         <img src="<?=htmlspecialchars($offer['image']); ?>" width="350" height="260" alt="<?=htmlspecialchars($offer['name']); ?>">
     </div>
@@ -10,8 +17,8 @@
                 <span class="lot__amount">Стартовая цена</span>
                 <span class="lot__cost"><?=htmlspecialchars(formatted_price($offer['price'])); ?></span>
             </div>
-            <div class="lot__timer timer">
-                12:23
+            <div class="lot__timer timer <?=($lessThenHour) ? "timer--finishing" : "" ?>">
+                <?php print ($hours . ':' . $minutes); ?>
             </div>
         </div>
     </div>
