@@ -1,6 +1,5 @@
 <?php
-function include_template($name, $data)
-{
+function include_template($name, $data) {
     $name = 'templates/' . $name;
     $result = '';
 
@@ -17,15 +16,13 @@ function include_template($name, $data)
     return $result;
 }
 
-function formatted_price(float $cost)
-{
+function formatted_price(float $cost) {
     $cost = ceil($cost);
 
     return number_format($cost, 0, "", " ") . " " . "₽";
 }
 
-function time_left(string $final_date): array
-{
+function time_left(string $final_date): array {
 
     $dt_cur = time();
     $dt_end = strtotime($final_date);
