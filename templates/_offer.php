@@ -1,10 +1,11 @@
 ﻿<?php
-    $time_left = time_left ($offer['fd']);
-    $hours = $time_left[0];
-    $minutes = $time_left[1];
-    $lessThenHour = ($hours < 1 && $minutes < 60);
+    $time_left=time_left ($offer['finalDate']);
+    $hours=$time_left[0];
+    $minutes=$time_left[1];
+    $lessThenHour=($hours < 1 && $minutes < 60);
+    $lot_is_alive=($hours >= 0 && $minutes >= 1);
 ?>
-
+<?php if ($lot_is_alive): ?>
 <li class="lots__item lot">
     <div class="lot__image">
         <img src="<?=htmlspecialchars($offer['image']); ?>" width="350" height="260" alt="<?=htmlspecialchars($offer['name']); ?>">
@@ -23,3 +24,4 @@
         </div>
     </div>
 </li>
+<?php endif; ?>
