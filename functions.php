@@ -22,6 +22,7 @@ function formatted_price(float $cost) {
     return number_format($cost, 0, "", " ") . " " . "₽";
 }
 
+
 function time_left(string $final_date): array {
 
     $dt_cur = time();
