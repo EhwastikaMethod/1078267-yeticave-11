@@ -12,23 +12,23 @@ CREATE TABLE categories (
 CREATE TABLE users (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    email VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(254) NOT NULL UNIQUE,
     user_password VARCHAR(15) NOT NULL,
-    user_contacts VARCHAR(50) NOT NULL
+    user_contacts VARCHAR(60) NOT NULL
 );
 
 CREATE TABLE lots (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    lot_name VARCHAR(70),
-    lot_description TEXT,
-    lot_image VARCHAR(265),
-    initial_price INT UNSIGNED,
-    final_date DATE,
+    name VARCHAR(70) NOT NULL,
+    description TEXT NOT NULL,
+    image VARCHAR(265) NOT NULL,
+    initial_price INT UNSIGNED NOT NULL,
+    final_date DATE NOT NULL,
     bet_step INT UNSIGNED,
     winner_user_id INT UNSIGNED,
-    creator_user_id INT UNSIGNED,
-    category_id INT UNSIGNED,
+    creator_user_id INT UNSIGNED NOT NULL,
+    category_id INT UNSIGNED NOT NULL,
     FOREIGN KEY (winner_user_id) REFERENCES users (id),
     FOREIGN KEY (creator_user_id) REFERENCES users (id),
     FOREIGN KEY (category_id) REFERENCES categories (id)
