@@ -13,8 +13,8 @@ CREATE TABLE users (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     email VARCHAR(254) NOT NULL UNIQUE,
-    user_password VARCHAR(15) NOT NULL,
-    user_contacts VARCHAR(60) NOT NULL
+    password VARCHAR(256) NOT NULL,
+    contacts VARCHAR(60) NOT NULL
 );
 
 CREATE TABLE lots (
@@ -25,7 +25,7 @@ CREATE TABLE lots (
     image VARCHAR(265) NOT NULL,
     initial_price INT UNSIGNED NOT NULL,
     final_date DATE NOT NULL,
-    bet_step INT UNSIGNED,
+    bet_step INT UNSIGNED NOT NULL,
     winner_user_id INT UNSIGNED,
     creator_user_id INT UNSIGNED NOT NULL,
     category_id INT UNSIGNED NOT NULL,
