@@ -5,7 +5,7 @@ USE yeticave;
 
 CREATE TABLE categories (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    category_name VARCHAR(30),
+    name VARCHAR(30),
     code VARCHAR(16)
 );
 
@@ -21,11 +21,11 @@ CREATE TABLE lots (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     name VARCHAR(70) NOT NULL,
-    description TEXT NOT NULL,
+    description TEXT,
     image VARCHAR(265) NOT NULL,
     initial_price INT UNSIGNED NOT NULL,
     final_date DATE NOT NULL,
-    bet_step INT UNSIGNED NOT NULL,
+    bet_step INT UNSIGNED,
     winner_user_id INT UNSIGNED,
     creator_user_id INT UNSIGNED NOT NULL,
     category_id INT UNSIGNED NOT NULL,
@@ -43,4 +43,3 @@ CREATE TABLE bets (
     FOREIGN KEY (user_id) REFERENCES users (id),
     FOREIGN KEY (lot_id) REFERENCES lots (id)
 );
-
