@@ -55,9 +55,11 @@ ON lots.category_id = categories.id;
 --запрос на обновление названия лота по его идентификатору.
 
 UPDATE lots
-SET name = id;
+SET name = 'Доска DC Ply Mens 2016/2017 Snowboard'
+WHERE id = 2;
 
-SELECT name from lots;
+SELECT name from lots
+WHERE id = 2;
 
 
 --запрос на получения перечня ставок для лота по его идентификатору с сортировкой по дате.
