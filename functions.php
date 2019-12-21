@@ -16,7 +16,7 @@ function include_template($name, $data) {
     return $result;
 }
 
-function formatted_price(float $cost) {
+function formatted_price(int $cost) {
     $cost = ceil($cost);
 
     return number_format($cost, 0, "", " ") . " " . "₽";
