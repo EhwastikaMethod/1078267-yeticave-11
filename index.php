@@ -4,21 +4,23 @@ require_once 'init.php';
 if (!$link) {
     $error = mysqli_connect_error();
     $content = include_template('error.php', ['error' => $error]);
+    print(include_template('layout.php', ['content' => $content, 'categories' => []]));
+    die;
+}
+
+$sql = 'SELECT id, name FROM categories';
+$result = mysqli_query($link, $sql);
+
+if ($result) {
+    $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 else {
-    $sql = 'SELECT id, name FROM categories';
-    $result = mysqli_query($link, $sql);
-
-    if ($result) {
-        $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    }
-    else {
-        $error = mysqli_error($link);
-        $content = include_template('error.php', ['error' => $error]);
-    }
+    $error = mysqli_error($link);
+    $content = include_template('error.php', ['error' => $error]);
 }
 
-$sql = 'SELECT lots.name as name, categories.name as category_name, initial_price, image, final_date from lots JOIN categories ON categories.id = category_id ORDER BY final_date DESC';
+
+$sql = 'SELECT l.name as name, c.name as category_name, initial_price, image, final_date from lots as l JOIN categories as c ON c.id = category_id ORDER BY final_date DESC';
 
 if ($res = mysqli_query($link, $sql)) {
     $lots = mysqli_fetch_all($res, MYSQLI_ASSOC);
